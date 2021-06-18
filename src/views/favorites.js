@@ -1,9 +1,9 @@
-import {MyFavorites} from '../components/myFavorites';
+import { MyFavorites } from '../components/myFavorites';
 import React from 'react';
-export const Favorites = ()=> {
-    return(
+export const Favorites = () => {
+    return (
         <div className="favorites h-100">
-            <MyFavorites/>
+            <MyFavorites />
         </div>
     );
 }

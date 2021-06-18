@@ -9,23 +9,19 @@ const injectContext = PassedComponent => {
             getActions: () => state.actions,
             setStore: updateStore => setState({
                 store: Object.assign(state.store, updateStore),
-                actions:{...state.actions}
+                actions: { ...state.actions }
             })
         }));
 
         useEffect(() => {
-            // funciones a ejecutar cuando carga la pagina
-            state.actions.getList();
-            state.actions.getCharacters("https://swapi.dev/api/people/");
-            state.actions.getPlanets("https://swapi.dev/api/planets/");
-            state.actions.getStarShips("https://swapi.dev/api/starships/");
-        }, [])
+            state.actions.getCharacters("https://swapi.dev/api/people?page=1&limit=9",{});
+        });
 
         return (
             <Context.Provider value={state}>
                 <PassedComponent {...props} />
             </Context.Provider>
-        )
+        );
 
     }
     return StoreWrapper;

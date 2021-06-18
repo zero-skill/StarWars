@@ -6,13 +6,14 @@ export const MyFavorites = () => {
 
     return (
         <div className="row">
+        HOLA FAVORITES
             <div className="col-md-4">
                 <ul className="list-group">
                     {
                         !!store.favorite.length !== 0 &&
                         store.favorite.map((value, index) => {
                             return <li className="list-group-item" key={index} >
-                                {value}test
+                                {value}
                                 <i onClick={()=>actions.removeFavorite(value)}><MdRemoveCircle/></i>
                             </li>
                         })
