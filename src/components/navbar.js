@@ -15,12 +15,12 @@ const Navbar = () => {
                         <li className="nav-item">
                          <Link className="nav-link" to="/characters">Characters</Link>
                          </li>
-                        {/* <li class="nav-item">
-                         <Link className={Location.pathname == "/planets" ? "" : ""} to="/planets">Planets</Link>&nbsp;&nbsp;
+                         <li className="nav-item">
+                         <Link className="nav-link" to="/planets">Planets</Link>
                          </li>
-                         <li class="nav-item">
-                         <Link className={Location.pathname == "/naves" ? "" : ""} to="/naves">Naves</Link>&nbsp;&nbsp;
-                         </li>*/}
+                         <li className="nav-item">
+                         <Link className="nav-link" to="/spaceships">Spaceships</Link>&nbsp;&nbsp;
+                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="favorites">My favourites</Link>
                         </li>
