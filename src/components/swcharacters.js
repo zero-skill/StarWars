@@ -27,7 +27,7 @@ const SWCharacters = () => {
                     !!people &&
                         people.results.length > 0 ?
                         people.results.map((character, index) => (
-                            <div className="col-md-4" id={index} key={index}>
+                            <div className="col-md-4" id={"char_"+index} >
                                 <div className="card my-3 shadow">
                                     <img
                                         src={`/img/characters/${getImgName(character.name)}`}
