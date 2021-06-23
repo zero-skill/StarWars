@@ -1,4 +1,4 @@
-import  {SWCharacters}  from '../components/swcharacters';
+import  SWCharacters  from '../components/swcharacters';
 import React from 'react';
 export const Characters = () => {
     return (

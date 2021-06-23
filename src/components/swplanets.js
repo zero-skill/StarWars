@@ -1,5 +1,5 @@
-import  {useContext, useState} from 'react';
-import {Context} from '../store/appContext';
+import  {useContext, useState} from 'react'; // eslint-disable-next-line
+import {Context} from '../store/appContext'; // eslint-disable-next-line
 export const SWPlanets = () => {
   
     return (

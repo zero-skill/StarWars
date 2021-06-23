@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from 'react';
-import getState from './flux.js';
+import getState from './flux';
 export const Context = createContext(null);
 
-const injectContext = PassedComponent => {
+export default function injectContext(PassedComponent){
     const StoreWrapper = props => {
         const [state, setState] = useState(getState({
             getStore: () => state.store,
@@ -14,8 +14,8 @@ const injectContext = PassedComponent => {
         }));
 
         useEffect(() => {
-            state.actions.getCharacters("https://swapi.dev/api/people?page=1&limit=9",{});
-        });
+            state.actions.getPeople('https://swapi.dev/api/people?page=1&limit=9',{});
+        },[]);
 
         return (
             <Context.Provider value={state}>
@@ -27,4 +27,3 @@ const injectContext = PassedComponent => {
     return StoreWrapper;
 }
 
-export default injectContext;

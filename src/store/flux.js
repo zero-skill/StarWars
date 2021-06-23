@@ -1,13 +1,13 @@
-const getState = ({ getStore, getActions, setStore }) => {
+export default function getState({ getStore, getActions, setStore }) {
     return {
         store: {
            
-            characters: null,
+            people: null,
             error: null,
             favorite: [],
         },
         actions: {
-            getCharacters: async (url, options ={
+            getPeople: async (url, options ={
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
                     const data = await response.json();
                     setStore({
-                        characters: data
+                        people: data
                     });
                 } catch (error) {
                     setStore({
@@ -32,4 +32,3 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
     }
 }
-export default getState;
