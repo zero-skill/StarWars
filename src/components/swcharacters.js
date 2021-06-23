@@ -27,7 +27,7 @@ const SWCharacters = () => {
                     !!people &&
                         people.results.length > 0 ?
                         people.results.map((character, index) => (
-                            <div className="col-md-4" key={index}>
+                            <div className="col-md-4" id={index} key={index}>
                                 <div className="card my-3 shadow">
                                     <img
                                         src={`/img/characters/${getImgName(character.name)}`}
@@ -58,7 +58,7 @@ const SWCharacters = () => {
                                 <Pagination
                                     activePage={page}
                                     itemsCountPerPage={9}
-                                    totalItemsCount={people.count||people.total_records}
+                                    totalItemsCount={82}
                                     onChange={handleChangePage}
                                     itemClass="page-item"
                                     linkClass="page-link"
