@@ -14,7 +14,7 @@ export default function injectContext(PassedComponent){
         }));
 
         useEffect(() => {
-            state.actions.getPeople('https://swapi.dev/api/people?page=1&limit=9',{});
+            state.actions.getPeople('https://www.swapi.tech/api/people?page=1&limit=6',{});
         },[]);
 
         return (

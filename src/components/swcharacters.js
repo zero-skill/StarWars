@@ -11,7 +11,7 @@ const SWCharacters = () => {
     };
     const handleChangePage = (pageNumber) => {
         setPage(pageNumber);
-        actions.getPeople(`https://www.swapi.tech/api/people/?page=${pageNumber}&limit=9`);
+        actions.getPeople(`https://www.swapi.tech/api/people/?page=${pageNumber}&limit=6`);
     };
     return (
         <div className="row">
@@ -27,7 +27,7 @@ const SWCharacters = () => {
                     !!people &&
                         people.results.length > 0 ?
                         people.results.map((character, index) => (
-                            <div className="col-md-4" id={"char_"+index} >
+                            <div className="col-md-4" id={"char_"+index} key={index} >
                                 <div className="card my-3 shadow">
                                     <img
                                         src={`/img/characters/${getImgName(character.name)}`}
@@ -57,8 +57,8 @@ const SWCharacters = () => {
                             people.results.length > 0 ? (
                                 <Pagination
                                     activePage={page}
-                                    itemsCountPerPage={9}
-                                    totalItemsCount={82}
+                                    itemsCountPerPage={6}
+                                    totalItemsCount={people.total_records}
                                     onChange={handleChangePage}
                                     itemClass="page-item"
                                     linkClass="page-link"
