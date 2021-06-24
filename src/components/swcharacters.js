@@ -38,6 +38,14 @@ const SWCharacters = () => {
                                             {character.name}
                                         </h4>
                                     </div>
+                                    <div className="card-footer d-flex justify-content-around">
+                                        <div className="btn btn-secondary">
+                                            Read More
+                                        </div>
+                                        <div className="btn btn-outline-danger">
+                                            ♥
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         )) 
