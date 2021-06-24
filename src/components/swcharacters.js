@@ -1,14 +1,14 @@
 import { useContext, useState } from 'react';
 import { Context } from '../store/appContext';
 import Pagination from 'react-js-pagination';
+import Card from './card'
+import LoadingSpinner from './loadingSpinner';
 
 const SWCharacters = () => {
     const { store, actions } = useContext(Context);
     const { people } = store;
     const [page, setPage] = useState(1);
-    const getImgName = name => {
-        return name.toLowerCase().split(" ").join("-") + ".jpg";
-    };
+
     const handleChangePage = (pageNumber) => {
         setPage(pageNumber);
         actions.getPeople(`https://www.swapi.tech/api/people/?page=${pageNumber}&limit=6`);
@@ -24,39 +24,10 @@ const SWCharacters = () => {
             </div>
             <div className="row">
                 {
-                    !!people &&
-                        people.results.length > 0 ?
-                        people.results.map((character, index) => (
-                            <div className="col-md-4" id={"char_" + index} key={index} >
-                                <div className="card my-3 shadow">
-                                    <img
-                                        src={`/img/characters/${getImgName(character.name)}`}
-                                        className="card-img-top" alt="img"
-                                    />
-                                    <div className="card-body">
-                                        <h4 className="card-title text-center">
-                                            {character.name}
-                                        </h4>
-                                    </div>
-                                    <div className="card-footer d-flex justify-content-around">
-                                        <button type="button" className="btn btn-outline-secondary" >
-                                            Read more
-                                        </button>
-                                        
-                                        <div className="btn btn-outline-danger">
-                                            ♥
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))
-                        : (
-                            <div className="col-md-12 p5 d-flex justify-content-center">
-                                <div className="spinner-border text-success my-5" role="status">
-                                    <span className="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
-                        )
+                    !!people ?
+                        <Card elements={people} route="people" />
+                        :
+                        <LoadingSpinner />
                 }
             </div>
             <div className="row">
@@ -64,15 +35,15 @@ const SWCharacters = () => {
                     {
                         !!people &&
                             people.results.length > 0 ? (
-                                <Pagination
-                                    activePage={page}
-                                    itemsCountPerPage={6}
-                                    totalItemsCount={people.total_records}
-                                    onChange={handleChangePage}
-                                    itemClass="page-item"
-                                    linkClass="page-link"
-                                />
-                            ) : ("")
+                            <Pagination
+                                activePage={page}
+                                itemsCountPerPage={6}
+                                totalItemsCount={people.total_records}
+                                onChange={handleChangePage}
+                                itemClass="page-item"
+                                linkClass="page-link"
+                            />
+                        ) : ("")
                     }
                 </div>
             </div>
