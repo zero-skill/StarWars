@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react';
 import { Context } from '../store/appContext';
 import Pagination from 'react-js-pagination';
-import { ModalSWCharacter } from './modal/modalswcharacter';
 
 const SWCharacters = () => {
     const { store, actions } = useContext(Context);
@@ -40,13 +39,10 @@ const SWCharacters = () => {
                                         </h4>
                                     </div>
                                     <div className="card-footer d-flex justify-content-around">
-                                        <button type="button" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target={"#exampleModal_"+index}>
+                                        <button type="button" className="btn btn-outline-secondary" >
                                             Read more
                                         </button>
-                                        <ModalSWCharacter
-                                            swcId={index}
-                                            character={character}
-                                        />
+                                        
                                         <div className="btn btn-outline-danger">
                                             ♥
                                         </div>
