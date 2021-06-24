@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { Context } from '../store/appContext';
 import Pagination from 'react-js-pagination';
+import { ModalSWCharacter } from './modal/modalswcharacter';
 
 const SWCharacters = () => {
     const { store, actions } = useContext(Context);
@@ -27,7 +28,7 @@ const SWCharacters = () => {
                     !!people &&
                         people.results.length > 0 ?
                         people.results.map((character, index) => (
-                            <div className="col-md-4" id={"char_"+index} key={index} >
+                            <div className="col-md-4" id={"char_" + index} key={index} >
                                 <div className="card my-3 shadow">
                                     <img
                                         src={`/img/characters/${getImgName(character.name)}`}
@@ -39,16 +40,20 @@ const SWCharacters = () => {
                                         </h4>
                                     </div>
                                     <div className="card-footer d-flex justify-content-around">
-                                        <div className="btn btn-secondary">
-                                            Read More
-                                        </div>
+                                        <button type="button" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target={"#exampleModal_"+index}>
+                                            Read more
+                                        </button>
+                                        <ModalSWCharacter
+                                            swcId={index}
+                                            character={character}
+                                        />
                                         <div className="btn btn-outline-danger">
                                             ♥
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        )) 
+                        ))
                         : (
                             <div className="col-md-12 p5 d-flex justify-content-center">
                                 <div className="spinner-border text-success my-5" role="status">
@@ -71,7 +76,7 @@ const SWCharacters = () => {
                                     itemClass="page-item"
                                     linkClass="page-link"
                                 />
-                        ) : ("")
+                            ) : ("")
                     }
                 </div>
             </div>
