@@ -14,15 +14,15 @@ const SWCharacters = () => {
         actions.getPeople(`https://www.swapi.tech/api/people/?page=${pageNumber}&limit=6`);
     };
     return (
-        <div className="row">
-            <h1>Characters</h1>
-            <div className="row">
+        <div className="row ">
+            <div className="row mt-2">
+            <h2 className="h2 text-white">Characters</h2>
                 <div
                     className="col-md-12 d-flex align-content-center">
-                    <p>List of Characters</p>
+                    <p className="text-white">List of Characters that we get by consuming swapi.tech/api</p>
                 </div>
             </div>
-            <div className="row">
+            <div className="row bg-custom rounded-3 py-1">
                 {
                     !!people ?
                         <Card elements={people} route="people" />
@@ -31,7 +31,7 @@ const SWCharacters = () => {
                 }
             </div>
             <div className="row">
-                <div className="col-md-12 d-flex justify-content-center py-5">
+                <div className="col-md-12 d-flex justify-content-center pt-4 pb-3">
                     {
                         !!people &&
                             people.results.length > 0 ? (
