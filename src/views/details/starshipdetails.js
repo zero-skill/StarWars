@@ -10,7 +10,8 @@ function StarshipDetails(){
     const { starship } = store;
     useEffect(() => {
         actions.getStarship(`https://www.swapi.tech/api/starships/${params.id}`);
-    }, [])
+    }// eslint-disable-next-line react-hooks/exhaustive-deps
+    , [])
     const getImgName = name => {
         return name.toLowerCase().split(" ").join("-") + ".jpg";
     };

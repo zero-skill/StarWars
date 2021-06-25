@@ -10,7 +10,8 @@ function PlanetsDetails() {
     const { planet } = store;
     useEffect(() => {
         actions.getPlanet(`https://www.swapi.tech/api/planets/${params.id}`);
-    }, [])
+    }// eslint-disable-next-line react-hooks/exhaustive-deps
+    , [])
     const getImgName = name => {
         return name.toLowerCase().split(" ").join("-") + ".jpg";
     };

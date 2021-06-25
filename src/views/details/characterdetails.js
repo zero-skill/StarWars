@@ -10,7 +10,8 @@ function CharacterDetails() {
     const { character } = store;
     useEffect(() => {
         actions.getCharacter(`http://www.swapi.tech/api/people/${params.id}`);
-    }, [])
+    }// eslint-disable-next-line react-hooks/exhaustive-deps
+    , [])
     const getImgName = name => {
         return name.toLowerCase().split(" ").join("-") + ".jpg";
     };
