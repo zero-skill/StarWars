@@ -8,6 +8,7 @@ import { Home } from './views/home';
 import { NotFounded } from './views/notfounded';
 import CharacterDetails  from './views/details/characterdetails';
 import Navbar from './components/navbar';
+import Footer from './components/footer';
 import injectContext from './store/appContext';
 const App = (props) => {
     return (
@@ -24,6 +25,7 @@ const App = (props) => {
                     <Route component={NotFounded} />
                 </Switch>
             </div>
+            <Footer/>
         </BrowserRouter>
     );
 }
