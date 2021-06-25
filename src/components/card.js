@@ -9,8 +9,8 @@ function Card(props) {
             <div className="col-md-4" id={"char_" + index} key={index} >
                 <div className="card my-3 shadow">
                     <img
-                        src={`/img/characters/${getImgName(element.name)}`}
-                        className="card-img-top" alt="img"
+                        src={`/img/${props.route}/${getImgName(element.name)}`}
+                        className="card-img-top" alt={`img of ${element.name}`}
                     />
                     <div className="card-body">
                         <h4 className="card-title text-center">
