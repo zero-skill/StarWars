@@ -25,7 +25,7 @@ function CharacterDetails() {
                             <div className="col-lg-6 col-sm-12 character-details-img">
                                 <div className="row">
                                     <img
-                                        src={`/img/characters/${getImgName(character.data.result.properties.name)}`}
+                                        src={`/img/people/${getImgName(character.data.result.properties.name)}`}
                                         className="img-fluid rounded shadow " alt={`img of ${character.data.result.properties.name}`}
                                     />
                                 </div>
