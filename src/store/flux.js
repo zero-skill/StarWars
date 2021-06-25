@@ -57,7 +57,7 @@ export default function getState({ getStore, getActions, setStore }) {
             }) => {
                 try {
                     const response = await fetch(url, options);
-                    if (response.status !== 200) throw new Error("Error API");
+                    if (response.status !== 200) throw new Error("Error fetching homeworld");
                     const data = await response.json();
                     let getHomeworld = async (url, options = {
                         method: 'GET',
@@ -79,6 +79,25 @@ export default function getState({ getStore, getActions, setStore }) {
                     let home = await getHomeworld(data.result.properties.homeworld);
                     setStore({
                         character: { data: data, planet: home }
+                    });
+                } catch (error) {
+                    setStore({
+                        error: error.message
+                    })
+                }
+            },
+            getPlanet: async (url, options = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }) => {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.status !== 200) throw new Error("Error fetching Planet");
+                    const data = await response.json();
+                    setStore({
+                        planet: data
                     });
                 } catch (error) {
                     setStore({

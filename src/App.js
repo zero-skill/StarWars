@@ -10,6 +10,7 @@ import CharacterDetails  from './views/details/characterdetails';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import injectContext from './store/appContext';
+import PlanetsDetails from './views/details/planetdetails';
 const App = (props) => {
     return (
         <BrowserRouter>
@@ -22,6 +23,7 @@ const App = (props) => {
                     <Route exact path="/spaceships" component={Spaceships} />
                     <Route exact path="/favorites" component={Favorites} />
                     <Route exact path="/people/:name/:id" component={CharacterDetails} />
+                    <Route exact path="/planets/:name/:id" component={PlanetsDetails}/>
                     <Route component={NotFounded} />
                 </Switch>
             </div>
