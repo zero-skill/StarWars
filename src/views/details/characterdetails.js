@@ -25,7 +25,7 @@ function CharacterDetails() {
                                 <div className="row">
                                     <img
                                         src={`/img/characters/${getImgName(character.data.result.properties.name)}`}
-                                        className="img-fluid rounded shadow " alt="img"
+                                        className="img-fluid rounded shadow " alt={`img of ${character.data.result.properties.name}`}
                                     />
                                 </div>
                                 <div className="row">

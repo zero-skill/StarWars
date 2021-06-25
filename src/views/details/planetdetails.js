@@ -25,7 +25,7 @@ function PlanetsDetails() {
                                 <div className="row">
                                     <img
                                         src={`/img/planets/${getImgName(planet.result.properties.name)}`}
-                                        className="img-fluid rounded shadow " alt="img"
+                                        className="img-fluid rounded shadow " alt={`img of ${planet.result.properties.name}`}
                                     />
                                 </div>
                                 <div className="row">

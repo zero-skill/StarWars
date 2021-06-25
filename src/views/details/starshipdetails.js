@@ -25,7 +25,7 @@ function StarshipDetails(){
                                 <div className="row">
                                     <img
                                         src={`/img/starships/${getImgName(starship.result.properties.name)}`}
-                                        className="img-fluid rounded shadow " alt="img"
+                                        className="img-fluid rounded shadow " alt={`img of ${starship.result.properties.name}`}
                                     />
                                 </div>
                                 <div className="row">
