@@ -9,7 +9,7 @@ function CharacterDetails() {
     const { store, actions } = useContext(Context);
     const { character } = store;
     useEffect(() => {
-        actions.getCharacter(`http://www.swapi.tech/api/people/${params.id}`);
+        actions.getCharacter(`https://www.swapi.tech/api/people/${params.id}`);
     }// eslint-disable-next-line react-hooks/exhaustive-deps
     , [])
     const getImgName = name => {
