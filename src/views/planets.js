@@ -1,4 +1,4 @@
-import  {SWPlanets}  from '../components/swplanets';
+import  SWPlanets  from '../components/swplanets';
 import React from 'react';
 export const Planets = () => {
     return (
