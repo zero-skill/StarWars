@@ -55,7 +55,16 @@ function CharacterDetails() {
                                         <li className="list-group-item d-flex justify-content-between"><span>Skin color:</span> <span>{character.data.result.properties.skin_color}</span></li>
                                         <li className="list-group-item d-flex justify-content-between"><span>Eye color:</span> <span>{character.data.result.properties.eye_color}</span></li>
                                         <li className="list-group-item d-flex justify-content-between"><span>Birth year:</span> <span>{character.data.result.properties.birth_year}</span></li>
-                                        <li className="list-group-item d-flex justify-content-between"><span>Homeworld:</span> <span>{character.data.result.properties.homeworld}</span></li>
+                                        <li className="list-group-item d-flex justify-content-between"><span>Homeworld:</span>
+                                            {!!character.planet?
+                                            <Link className="text-info" to={`/planets/${character.planet.result.properties.name.split(" ").join("").toLowerCase()}/${character.planet.result.uid}`}>
+                                                {character.planet.result.properties.name}
+                                            </Link>:
+                                                <span>
+                                                    Homeworld error
+                                                </span>
+                                            }
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
