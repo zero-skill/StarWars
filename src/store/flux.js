@@ -5,6 +5,8 @@ export default function getState({ getStore, getActions, setStore }) {
             character: null,
             planets: null,
             planet: null,
+            starships: null,
+            starship: null,
             error: null,
             favorite: [],
         },
@@ -47,6 +49,25 @@ export default function getState({ getStore, getActions, setStore }) {
                     setStore({
                         error: error.message
                     });
+                }
+            },
+            getStarships: async (url, options = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }) => {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.status !== 200) throw new Error("Error fetching Starships")
+                    const data = await response.json();
+                    setStore({
+                        starships: data
+                    })
+                } catch (error) {
+                    setStore({
+                        error: error.message
+                    })
                 }
             },
             getCharacter: async (url, options = {
@@ -104,8 +125,26 @@ export default function getState({ getStore, getActions, setStore }) {
                         error: error.message
                     })
                 }
-            }
-
+            },
+            getStarship: async (url,options = {
+                method: 'GET',
+                headers: {
+                    'Content-Type':'application/json',
+                }
+            })=>{
+                try {
+                    const response = await fetch(url,options);
+                    if (response.status!==200) throw new Error("Error fetching Starship");
+                    const data = await response.json();
+                    setStore({
+                        starship: data
+                    })
+                } catch (error) {
+                    setStore({
+                        error: error.message
+                    })
+                }
+            },
         }
     }
 }
