@@ -13,7 +13,7 @@ function Card(props) {
                         className="card-img-top" alt={`img of ${element.name}`}
                     />
                     <div className="card-body">
-                        <h4 className="card-title text-center">
+                        <h4 className="card-title fs-5 text-center">
                             {element.name}
                         </h4>
                     </div>
