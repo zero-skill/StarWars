@@ -20,9 +20,9 @@ function StarshipDetails(){
            { !!starship &&
                 starship.result.properties.name.split(" ").join("").toLowerCase()?
                 (
-                    <div className="card character-details my-0 shadow">
+                    <div className="card starship-details my-0 shadow">
                         <div className="row">
-                            <div className="col-lg-6 col-sm-12 character-details-img">
+                            <div className="col-lg-6 col-sm-12 starship-details-img">
                                 <div className="row">
                                     <img
                                         src={`/img/starships/${getImgName(starship.result.properties.name)}`}
