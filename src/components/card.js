@@ -23,10 +23,6 @@ function Card(props) {
                                 Read more
                             </button>
                         </Link>
-
-                        <div className="btn btn-outline-danger">
-                            ♥
-                        </div>
                     </div>
                 </div>
             </div>
