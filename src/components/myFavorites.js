@@ -6,19 +6,19 @@ export const MyFavorites = () => {
     const {favorites} = store;
 
     return (
-        <div className="row">
-        HOLA FAVORITES
-            <div className="col-md-4">
+        <div className="row ">
+        
+            <div className="col-md-6 mx-auto my-3 ">
                 <ul className="list-group">
                     {
                         favorites.length >= 1 ?
                         store.favorites.map((value, index) => {
-                            return <li className="list-group-item" key={index} >
+                            return <li className="list-group-item d-flex justify-content-between" key={index} >
                                 {value}
                                 <i onClick={()=>actions.removeFavorite(value)}><MdRemoveCircle/></i>
                             </li>
                         }):(
-                            "empty"
+                            <li className="list-group-item">You dont have favorites.</li>
                         )
                     }
                 </ul>

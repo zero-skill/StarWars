@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'bootstrap';
 import '@popperjs/core';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'animate.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';

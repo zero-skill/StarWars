@@ -7,7 +7,7 @@ function Card(props) {
         props.elements &&
         props.elements.results.map((element, index) => (
             <div className="col-md-4" id={"char_" + index} key={index} >
-                <div className="card my-3 shadow">
+                <div className="card my-3 shadow animate__bounceIn animate__faster">
                     <img
                         src={`/img/${props.route}/${getImgName(element.name)}`}
                         className="card-img-top" alt={`img of ${element.name}`}
