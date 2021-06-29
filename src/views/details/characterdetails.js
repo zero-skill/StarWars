@@ -3,15 +3,16 @@ import { useParams } from "react-router-dom";
 import { Context } from "../../store/appContext";
 import LoadingSpinner from "../../components/loadingSpinner";
 import { Link } from "react-router-dom";
+import {AiOutlineHeart,AiFillHeart} from 'react-icons/ai';
 
 function CharacterDetails() {
     const params = useParams();
     const { store, actions } = useContext(Context);
-    const { character } = store;
+    const { character, favorites } = store;
     useEffect(() => {
         actions.getCharacter(`https://www.swapi.tech/api/people/${params.id}`);
     }// eslint-disable-next-line react-hooks/exhaustive-deps
-    , [])
+        , [])
     const getImgName = name => {
         return name.toLowerCase().split(" ").join("-") + ".jpg";
     };
@@ -36,10 +37,20 @@ function CharacterDetails() {
                                                 Back to characters
                                             </button>
                                         </Link>
-
-                                        <div className="btn btn-outline-danger">
-                                            ♥
-                                        </div>
+                                        {(favorites.indexOf(character.data.result.properties.name) === -1) ?
+                                            (
+                                                <div className="btn btn-outline-danger" onClick={()=>{
+                                                    actions.addFavorite(character.data.result.properties.name)
+                                                }}>
+                                                    <AiOutlineHeart/>
+                                                </div>
+                                            ) : (
+                                                <div className="btn btn-danger" onClick={()=>{
+                                                    actions.removeFavorite(character.data.result.properties.name)
+                                                }}>
+                                                    <AiFillHeart/>
+                                                </div>
+                                            )}
                                     </div>
                                 </div>
                             </div>
@@ -57,10 +68,10 @@ function CharacterDetails() {
                                         <li className="list-group-item d-flex justify-content-between"><span>Eye color:</span> <span>{character.data.result.properties.eye_color}</span></li>
                                         <li className="list-group-item d-flex justify-content-between"><span>Birth year:</span> <span>{character.data.result.properties.birth_year}</span></li>
                                         <li className="list-group-item d-flex justify-content-between"><span>Homeworld:</span>
-                                            {!!character.planet?
-                                            <Link className="text-info" to={`/planets/${character.planet.result.properties.name.split(" ").join("").toLowerCase()}/${character.planet.result.uid}`}>
-                                                {character.planet.result.properties.name}
-                                            </Link>:
+                                            {!!character.planet ?
+                                                <Link className="text-info" to={`/planets/${character.planet.result.properties.name.split(" ").join("").toLowerCase()}/${character.planet.result.uid}`}>
+                                                    {character.planet.result.properties.name}
+                                                </Link> :
                                                 <span>
                                                     Homeworld error
                                                 </span>

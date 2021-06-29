@@ -8,7 +8,7 @@ export default function getState({ getStore, getActions, setStore }) {
             starships: null,
             starship: null,
             error: null,
-            favorite: [],
+            favorites: [],
         },
         actions: {
             getPeople: async (url, options = {
@@ -126,15 +126,15 @@ export default function getState({ getStore, getActions, setStore }) {
                     })
                 }
             },
-            getStarship: async (url,options = {
+            getStarship: async (url, options = {
                 method: 'GET',
                 headers: {
-                    'Content-Type':'application/json',
+                    'Content-Type': 'application/json',
                 }
-            })=>{
+            }) => {
                 try {
-                    const response = await fetch(url,options);
-                    if (response.status!==200) throw new Error("Error fetching Starship");
+                    const response = await fetch(url, options);
+                    if (response.status !== 200) throw new Error("Error fetching Starship");
                     const data = await response.json();
                     setStore({
                         starship: data
@@ -145,6 +145,20 @@ export default function getState({ getStore, getActions, setStore }) {
                     })
                 }
             },
+            addFavorite: (element) => {
+                let { favorites } = getStore();
+                favorites.push(element);
+                setStore({ 
+                    favorites
+                 });
+            },
+            removeFavorite: (element) => {
+                let { favorites } = getStore();
+                let newFavorites = favorites.filter(item=>item!==element);
+                setStore({
+                    favorites: newFavorites
+                });
+            }
         }
     }
 }

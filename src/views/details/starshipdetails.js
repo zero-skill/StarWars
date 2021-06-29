@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import { Context } from "../../store/appContext";
 import LoadingSpinner from "../../components/loadingSpinner";
 import { Link } from "react-router-dom";
+import {AiOutlineHeart,AiFillHeart} from 'react-icons/ai';
 
 function StarshipDetails(){
     const params = useParams();
     const { store, actions } = useContext(Context);
-    const { starship } = store;
+    const { starship,favorites } = store;
     useEffect(() => {
         actions.getStarship(`https://www.swapi.tech/api/starships/${params.id}`);
     }// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,10 +37,20 @@ function StarshipDetails(){
                                                 Back to starships
                                             </button>
                                         </Link>
-
-                                        <div className="btn btn-outline-danger">
-                                            ♥
-                                        </div>
+                                        {(favorites.indexOf(starship.result.properties.name) === -1) ?
+                                            (
+                                                <div className="btn btn-outline-danger" onClick={()=>{
+                                                    actions.addFavorite(starship.result.properties.name)
+                                                }}>
+                                                    <AiOutlineHeart/>
+                                                </div>
+                                            ) : (
+                                                <div className="btn btn-danger" onClick={()=>{
+                                                    actions.removeFavorite(starship.result.properties.name)
+                                                }}>
+                                                    <AiFillHeart/>
+                                                </div>
+                                            )}
                                     </div>
                                 </div>
                             </div>
